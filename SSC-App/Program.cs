@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 using SSC_App.Models;
@@ -10,9 +11,7 @@ builder.Services.AddRazorPages();
 
 //database connection
 builder.Services.AddDbContext<MessengerContext>(
-options =>
-    options.UseSqlServer("User ID=postgres;Password=cezar1234;Host=localhost;Port=5432;Database=messengerapp;" +
-    "Pooling=true;Min Pool Size=0;Max Pool Size=100;Connection Lifetime=0;"));
+    options => options.UseNpgsql("Host=localhost;Port=5432;Database=messengerapp;User Id=postgres;Password=cezar1234;"));
 
 var app = builder.Build();
 
